@@ -107,11 +107,11 @@ void BMP280::read(uint8_t *array, int array_size){
             << "\f" << "BMP_280"
             << "\n" << "================="
             << "\n"
-            << "\n" << "Temprature: " << int(T_fine)
+            << "\n" << "Temprature: " << int(T_fine) << " C"
             << "\n"
             << "\n" << "================="
             << "\n"
-            << "\n" << "Pressure: " << int(p)
+            << "\n" << "Pressure:" << int(p) << " P"
             << hwlib::flush;
         hwlib::cout << "De tempratuur is: " << int(T_fine) << hwlib::endl;
         hwlib::cout << "De Luchtdruk is: " << int(p) << hwlib::endl;
