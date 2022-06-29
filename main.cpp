@@ -20,11 +20,11 @@ int main(){
     hwlib::i2c_bus_bit_banged_scl_sda bus = hwlib::i2c_bus_bit_banged_scl_sda(scl, sda);
 
     BMP280 bmp280(bus);
-
+    bmp280.standaard();
     for (;;) {
         bmp280.warmte();
         bmp280.press();
-        bmp280.regenkans();
+        //bmp280.regenkans();
         bmp280.print();
         hwlib::wait_ms( 1000 );
     }

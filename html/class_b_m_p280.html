@@ -74,6 +74,15 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a6f61e0878f974c53b049d3d79af68865"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_m_p280.html#a6f61e0878f974c53b049d3d79af68865">BMP280</a> (hwlib::i2c_bus &amp;bus)</td></tr>
 <tr class="memdesc:a6f61e0878f974c53b049d3d79af68865"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cunstuctor.  <a href="class_b_m_p280.html#a6f61e0878f974c53b049d3d79af68865">More...</a><br /></td></tr>
 <tr class="separator:a6f61e0878f974c53b049d3d79af68865"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaea51b150ac589a6b4ea0447447d40e5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_m_p280.html#aaea51b150ac589a6b4ea0447447d40e5">standaard</a> ()</td></tr>
+<tr class="memdesc:aaea51b150ac589a6b4ea0447447d40e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Standaard schrijft de control, modes en de filter.  <a href="class_b_m_p280.html#aaea51b150ac589a6b4ea0447447d40e5">More...</a><br /></td></tr>
+<tr class="separator:aaea51b150ac589a6b4ea0447447d40e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa5ea3cbaff65a0bb5394c69c9e7ee17b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_m_p280.html#aa5ea3cbaff65a0bb5394c69c9e7ee17b">write</a> (int content)</td></tr>
+<tr class="memdesc:aa5ea3cbaff65a0bb5394c69c9e7ee17b"><td class="mdescLeft">&#160;</td><td class="mdescRight">write  <a href="class_b_m_p280.html#aa5ea3cbaff65a0bb5394c69c9e7ee17b">More...</a><br /></td></tr>
+<tr class="separator:aa5ea3cbaff65a0bb5394c69c9e7ee17b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8faa3ad100a154e583d225ae39711ff7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_m_p280.html#a8faa3ad100a154e583d225ae39711ff7">read</a> (uint8_t *array, int array_size)</td></tr>
+<tr class="memdesc:a8faa3ad100a154e583d225ae39711ff7"><td class="mdescLeft">&#160;</td><td class="mdescRight">read  <a href="class_b_m_p280.html#a8faa3ad100a154e583d225ae39711ff7">More...</a><br /></td></tr>
+<tr class="separator:a8faa3ad100a154e583d225ae39711ff7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abd206f16c05388c2b582da333bd3f908"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_m_p280.html#abd206f16c05388c2b582da333bd3f908">warmte</a> ()</td></tr>
 <tr class="memdesc:abd206f16c05388c2b582da333bd3f908"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tempratur meten in void warmte.  <a href="class_b_m_p280.html#abd206f16c05388c2b582da333bd3f908">More...</a><br /></td></tr>
 <tr class="separator:abd206f16c05388c2b582da333bd3f908"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -90,9 +99,6 @@ Public Member Functions</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">BMP280::BMP280 </td>
@@ -102,11 +108,6 @@ Public Member Functions</h2></td></tr>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>Cunstuctor. </p>
@@ -120,9 +121,6 @@ Public Member Functions</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void BMP280::press </td>
@@ -131,11 +129,6 @@ Public Member Functions</h2></td></tr>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>Pressure meten in void press. </p>
@@ -148,9 +141,6 @@ Public Member Functions</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void BMP280::print </td>
@@ -159,15 +149,61 @@ Public Member Functions</h2></td></tr>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>Het uit lezen van de pressure en temprature en deze waardes printen in void Print. </p>
 <p >We defineren eerst oled met de bus en zijn adress. Daarna defineren we de font met 8x8. En als laatste defineren we display met 2 parameters oled en font. Hierna schrijven we de dingen die we willen laten zien op de display. Die flushen we naar de oled en word het geprint. </p>
+
+</div>
+</div>
+<a id="a8faa3ad100a154e583d225ae39711ff7" name="a8faa3ad100a154e583d225ae39711ff7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8faa3ad100a154e583d225ae39711ff7">&#9670;&nbsp;</a></span>read()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void BMP280::read </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>array</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>array_size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>read </p>
+<p >read leest alle array's die jij aan geeft uit aan de hand van de naam en grote </p>
+
+</div>
+</div>
+<a id="aaea51b150ac589a6b4ea0447447d40e5" name="aaea51b150ac589a6b4ea0447447d40e5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaea51b150ac589a6b4ea0447447d40e5">&#9670;&nbsp;</a></span>standaard()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void BMP280::standaard </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Standaard schrijft de control, modes en de filter. </p>
+<p >We schrijven de control, modes en de filter een keer uit voor communicatie met de chip. </p>
 
 </div>
 </div>
@@ -176,9 +212,6 @@ Public Member Functions</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void BMP280::warmte </td>
@@ -187,15 +220,31 @@ Public Member Functions</h2></td></tr>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>Tempratur meten in void warmte. </p>
 <p >We schrijven de msb, lsb ,xlsb in een array door write aan te roepen. We lezen de array uit aan de hand van de read met 2 parameters de array en de array grote. Daarna maken we een 20 bit waarde door ze aan elkaar te plakken en op te schuiven. Met de 20 bit waarde en de register adresses kunnen we gaan rekenen. De daadwerkelijke tempratuur komt er uit als variable T_fine. </p>
+
+</div>
+</div>
+<a id="aa5ea3cbaff65a0bb5394c69c9e7ee17b" name="aa5ea3cbaff65a0bb5394c69c9e7ee17b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa5ea3cbaff65a0bb5394c69c9e7ee17b">&#9670;&nbsp;</a></span>write()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void BMP280::write </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>content</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>write </p>
+<p >write schrijft de schrijft alle adressen die je wilt in een array aan de hand van een hext decimaal. </p>
 
 </div>
 </div>
@@ -205,7 +254,7 @@ Public Member Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Jun 28 2022 11:00:46 for &lt;project name&gt; by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4
+Generated on Wed Jun 29 2022 14:47:41 for &lt;project name&gt; by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4
 </small></address>
 </body>
 </html>
