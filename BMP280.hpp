@@ -1,3 +1,14 @@
+// ====================================================================================
+//
+//       Author  :   Bas van den Bergh
+//       Filename:   BMP280.hpp
+//       Part of :   IPASS
+//
+//
+// Distributed under the Boost Software License, Version 1.0.
+// (See accompanying file LICENSE_1_0.txt or copy at
+// http://www.boost.org/LICENSE_1_0.txt)
+// =====================================================================================
 #include "hwlib.hpp"
 
 #ifndef BMP280_HPP
@@ -141,32 +152,32 @@ public:
 
 
     }
-    void regenkans(){
-        if(p <= 99000){
-            regenprocent = 80;
-        }
-        else if(p <= 99400){
-            regenprocent = 70;
-        }
-        else if(p <= 99800){
-            regenprocent = 60;
-        }
-        else if(p <= 100200){
-            regenprocent = 50;
-        }
-        else if(p <= 100700){
-            regenprocent = 40;
-        }
-        else if(p <= 101100){
-            regenprocent = 30;
-        }
-        else if(p <= 101600){
-            regenprocent = 20;
-        }
-        else if(p <= 102000){
-            regenprocent = 10;
-        }
-    }
+//    void regenkans(){
+//        if(p <= 99000){
+//            regenprocent = 80;
+//        }
+//        else if(p <= 99400){
+//            regenprocent = 70;
+//        }
+//        else if(p <= 99800){
+//            regenprocent = 60;
+//        }
+//        else if(p <= 100200){
+//            regenprocent = 50;
+//        }
+//        else if(p <= 100700){
+//            regenprocent = 40;
+//        }
+//        else if(p <= 101100){
+//            regenprocent = 30;
+//        }
+//        else if(p <= 101600){
+//            regenprocent = 20;
+//        }
+//        else if(p <= 102000){
+//            regenprocent = 10;
+//        }
+//    }
 
 
     /// \brief
