@@ -14,7 +14,7 @@
 
 BMP280::BMP280(hwlib::i2c_bus & bus) :
 bus( bus ) {
-    standaard();
+    setup();
     write(0x88);
     read(digtemp, 6);
     write(0x8E);
@@ -33,7 +33,7 @@ bus( bus ) {
     dig_P9 = (int16_t)(digpress[16] | (digpress[17] << 8));
 
 }
-void BMP280::standaard(){
+void BMP280::setup(){
     hwlib::i2c_write_transaction wtrans = ((hwlib::i2c_bus*)(&bus))->write(address);
     wtrans.write(control);
     wtrans.write(modes);
@@ -51,69 +51,48 @@ void BMP280::read(uint8_t *array, int array_size){
 }
 
 
-    void BMP280::warmte(){
-
+    double BMP280::calculateTemp(){
+            int32_t totaaltemp = 0x00;
             write(0xFA);
             read(resultstemp, 3);
-            totaaltemp = 0;
-            uint32_t newresulttemp = resultstemp[2] >> 4;
-            totaaltemp = (resultstemp[0] | totaaltemp) << 8;
+            int32_t newresulttemp = resultstemp[2] >> 4;
+            totaaltemp = resultstemp[0] << 8;
             totaaltemp = (totaaltemp | resultstemp[1]) << 4;
             totaaltemp = totaaltemp | newresulttemp;
-
+            double var1, var2, T;
             var1 = (((double) totaaltemp) / 16384.0 - ((double) dig_T1) / 1024.0) * ((double) dig_T2);
-            var2 = ((((double) dig_T1) / 131072.0 - ((double) dig_T1) / 8192) *
-                    (((double) totaaltemp) / 131072.0 - ((double) dig_T1) / 8192.0)) * ((double) dig_T3);
-            T_fine = (var1 + var2) / 5120.0;
+            var2 = ((((double) dig_T1) / 131072.0 - ((double) dig_T1) / 8192) * (((double) totaaltemp) / 131072.0 - ((double) dig_T1) / 8192.0)) * ((double) dig_T3);
+            T_fine = (int32_t) (var1 + var2);
+            T = (var1 + var2) / 5120.0;
+            return T;
     }
 
-    void BMP280::press(){
+    double BMP280::calculatePressure(){
+            int32_t totaalpress = 0x00;
             write(0xF7);
             read(resultspress, 3);
-            totaalpress = 0;
-            uint32_t newresultpressure = resultspress[2] >> 4;
-            totaalpress = (resultspress[0] | totaalpress) << 8;
+            int32_t newresultpressure = resultspress[2] >> 4;
+            totaalpress = resultspress[0] << 8;
             totaalpress = (totaalpress | resultspress[1]) << 4;
             totaalpress = totaalpress | newresultpressure;
 
+        double var1, var2, p;
+        var1 = ((double)T_fine/2.0) - 64000.0;
 
-        var3 = ((double)T_fine/2.0) - 64000.0;
+        var2 = var1 * var1 * ((double)dig_P6) / 32768.0;
+        var2 = var2 + var1 * ((double)dig_P5) *2.0;
+        var2 = (var2/4.0) + (((double)dig_P4) * 65536.0);
 
-        var4 = var3 * var3 * ((double)dig_P6) / 32768.0;
-        var4 = var4 + var3 * ((double)dig_P5) *2.0;
-        var4 = (var4/4.0) + (((double)dig_P4) * 65536.0);
-
-        var3 = (((double)dig_P3) * var3 * var3 / 524288.0 + ((double)dig_P2) * var3) / 524288.0;
-        var3 = (1.0 + var3 / 32768.0)* ((double)dig_P1);
-        if(var3 == 0 ){
+        var1 = (((double)dig_P3) * var1 * var1 / 524288.0 + ((double)dig_P2) * var1) / 524288.0;
+        var1 = (1.0 + var1 / 32768.0)* ((double)dig_P1);
+        if(var1 == 0 ){
             p = 0;
         }
         p = 1048576.0 - (double)totaalpress;
-        p = (p - (var4 / 4096.0)) * 6250.0 / var3;
-        var3 = ((double)dig_P9) * p * p / 2147483648.0;
-        var4 = p * ((double)dig_P8) / 32768.0;
-        p = p + (var3 + var4 + ((double) dig_P7)) / 16.0;
-
-
-    }
-
-    void BMP280::print(){
-
-        hwlib::wait_ms( 1000 );
-        auto oled    = hwlib::glcd_oled(bus, 0x3c );
-        auto font    = hwlib::font_default_8x8();
-        auto display = hwlib::terminal_from( oled, font );
-        display
-            << "\f" << "BMP_280"
-            << "\n" << "================="
-            << "\n"
-            << "\n" << "Temprature: " << int(T_fine) << " C"
-            << "\n"
-            << "\n" << "================="
-            << "\n"
-            << "\n" << "Pressure:" << int(p) << " P"
-            << hwlib::flush;
-        hwlib::cout << "De tempratuur is: " << int(T_fine) << hwlib::endl;
-        hwlib::cout << "De Luchtdruk is: " << int(p) << hwlib::endl;
+        p = (p - (var2 / 4096.0)) * 6250.0 / var1;
+        var1 = ((double)dig_P9) * p * p / 2147483648.0;
+        var2 = p * ((double)dig_P8) / 32768.0;
+        p = p + (var1 + var2 + ((double) dig_P7)) / 16.0;
+        return p;
     }
 

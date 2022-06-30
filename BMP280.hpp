@@ -16,12 +16,6 @@
 
 class BMP280{
 private:
-    double var1;
-    double var2;
-    double var3;
-    double var4;
-    double T_fine;
-    double p;
     uint16_t dig_T1;
     int16_t dig_T2 ;
     int16_t dig_T3 ;
@@ -40,12 +34,27 @@ private:
     static const uint_fast8_t control = 0xF4;
     static const uint8_t modes = 0b1010011;
     static  const uint_fast8_t filter = 0xF5;
+    int32_t T_fine;
     uint8_t resultstemp[3];
     uint8_t digtemp[6];
-    uint32_t totaaltemp = 0x00;
     uint8_t resultspress[3];
     uint8_t digpress[18];
-    uint32_t totaalpress = 0x00;
+    /// \brief
+    /// Standaard schrijft de control, modes en de filter.
+    /// \details
+    /// We schrijven de control, modes en de filter een keer uit voor communicatie met de chip.
+    void setup();
+
+    /// \brief
+    /// write
+    /// \details
+    /// write schrijft de schrijft alle adressen die je wilt in een array aan de hand van een hext decimaal.
+    void write(int content);
+    /// \brief
+    /// read
+    /// \details
+    /// read leest alle array's die jij aan geeft uit aan de hand van de naam en grote
+    void read(uint8_t* array, int array_size);
 
     /// \brief
    /// Cunstuctor
@@ -56,22 +65,7 @@ private:
    /// Deze waardes zijn signed en unsigned.
 public:
     BMP280(hwlib::i2c_bus & bus);
-    /// \brief
-    /// Standaard schrijft de control, modes en de filter.
-    /// \details
-    /// We schrijven de control, modes en de filter een keer uit voor communicatie met de chip.
-    void standaard();
 
-    /// \brief
-   /// write
-    /// \details
-    /// write schrijft de schrijft alle adressen die je wilt in een array aan de hand van een hext decimaal.
-    void write(int content);
-    /// \brief
-    /// read
-    /// \details
-    /// read leest alle array's die jij aan geeft uit aan de hand van de naam en grote
-    void read(uint8_t* array, int array_size);
     /// \brief
     /// Tempratur meten in void warmte.
     /// \details
@@ -80,7 +74,7 @@ public:
     /// Daarna maken we een 20 bit waarde door ze aan elkaar te plakken en op te schuiven.
     /// Met de 20 bit waarde en de register adresses kunnen we gaan rekenen.
     /// De daadwerkelijke tempratuur komt er uit als variable T_fine.
-    void warmte();
+    double calculateTemp();
     /// \brief
     /// Pressure meten in void press.
     /// \details
@@ -89,7 +83,7 @@ public:
     /// Daarna maken we een 20 bit waarde door ze aan elkaar te plakken en op te schuiven.
     /// Met de 20 bit waarde en de register adresses en T_fine van void warmte kunnen we gaan rekenen.
     /// De daadwerkelijke pressure komt eruit als variable p.
-    void press();
+    double calculatePressure();
     /// \brief
     /// Het uit lezen van de pressure en temprature en deze waardes printen in void Print.
     /// \details
